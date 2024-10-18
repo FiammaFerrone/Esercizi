@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div>
-        <Counter initialValue={1} incrementValue={3}/>
+        <Counter initialValue={2} changeValue={1}/>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
