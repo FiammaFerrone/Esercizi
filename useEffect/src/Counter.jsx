@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react"
 
-function Counter({counter = 0,addValue = 1}) {
+function Counter({counter, addValue }) {
     const [count, setCount] = useState(counter)
 
     function increment() {
-        setCount(count + addValue)
+        setCount((c) => c + addValue)
     };
+
+    console.log(count);
+    
     
     useEffect(() => {
         console.log(`My value is ${count}`);
-    },[count]);
+    },[]);
     
     return (
         <div>

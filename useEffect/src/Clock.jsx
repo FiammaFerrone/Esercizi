@@ -14,7 +14,7 @@ function Clock() {
     return () => {
         clearInterval(timer);
     }
-  }, [time]);
+  }, []);
   return (
     <div>
       <h2> Current time : {time.toLocaleTimeString()}</h2>

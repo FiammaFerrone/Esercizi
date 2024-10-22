@@ -4,19 +4,24 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import InteractiveWelcome from "./InteractiveWelcome";
-import Login from "./Login";
+import Colors from "./Colors";
 
 function App() {
+  const colorsList = [
+    { id: 1, name: "red" },
+    { id: 2, name: "yellow" },
+    { id: 3, name: "green" },
+    { id: 4, name: "orange" },
+  ];
   const [count, setCount] = useState(0);
-  function handleLogin(state) {
-    console.log(state);
-  }
+  
   return (
     <>
       <div>
-        <InteractiveWelcome />
-        <Login onLogin={handleLogin} />
+        <h2>this is my list</h2>
+        <Colors colors={colorsList}/>
+      </div> 
+      <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
