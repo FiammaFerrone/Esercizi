@@ -1,21 +1,19 @@
 /** @format */
-
 import { useState } from "react";
 
 const TodoList = ({ todos }) => {
   const [todo, setTodo] = useState(todos);
   const [inputValue, setInputValue] = useState("");
 
-  const handleInput = (event) => {
-    {
-      setInputValue(event.target.value);
-    }
-  };
-
   const updatedArray = () => {
     if (inputValue !== "") {
       setTodo([...todo, inputValue]);
+      setInputValue("");
     }
+  };
+
+  const remove = (todoToRemove) => {
+    setTodo(todo.filter((t) => t !== todoToRemove));
   };
 
   return (
@@ -24,14 +22,26 @@ const TodoList = ({ todos }) => {
         type="text"
         placeholder="write here"
         value={inputValue}
-        onChange={handleInput}
+        onChange={(event) => {
+          setInputValue(event.target.value);
+        }}
       />
       <button onClick={updatedArray}>Click me</button>
       <ul>
-        {names.map((name) => {
-          <li>{name}</li>;
+        {todo.map((t, index) => {
+          return (
+            <li key={index}>
+              {t}
+
+              <button onClick={()=> remove(t)}> delete </button>
+            </li>
+          );
         })}
       </ul>
+      <button
+        onClick={() => {
+          setTodo([])
+        }}> reset </button>
     </div>
   );
 };

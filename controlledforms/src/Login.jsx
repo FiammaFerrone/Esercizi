@@ -11,12 +11,18 @@ function Login({onLogin}) {
   function handleName(event) {
     setUsername(event.target.value);
   }
+
   function handlePassword(event) {
     setPassword(event.target.value);
   }
+
   function handleClick(event) {
     event.preventDefault()
     onLogin({username, password, remember});
+    console.log(event);
+    console.log(event.target.elements.username.value);
+    
+    
   }
 
   function checkRemember(event) {
@@ -24,12 +30,12 @@ function Login({onLogin}) {
   }
 
   return (
-    <form name="myForm">
-      <input type="text" onChange={handleName} value={username} />
+    <form name="myForm" onSubmit={handleClick}>
+      <input type="text" onChange={handleName} value={username} name="username"/>
       <input type="password" onChange={handlePassword} value={password} />
       <input type="checkbox" name="checkbox" onChange={checkRemember} />
 
-      <button disabled={!username || !password} onClick={handleClick}>
+      <button type="submit" disabled={!username || !password}>
         login
       </button>
     </form>
